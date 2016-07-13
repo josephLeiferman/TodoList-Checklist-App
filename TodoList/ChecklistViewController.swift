@@ -67,7 +67,7 @@ class ChecklistViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChecklistItem", forIndexPath: indexPath)
         let item = items[indexPath.row]
         
-        configureTextForCell(<#T##cell: UITableViewCell##UITableViewCell#>, withChecklistItem: item)
+        configureTextForCell(cell, withChecklistItem: item)
         configureCheckmarkForCell(cell, withChecklistItem: item)
         return cell
     }
@@ -80,6 +80,14 @@ class ChecklistViewController: UITableViewController {
             configureCheckmarkForCell(cell, withChecklistItem: item)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        //1
+        items.removeAtIndex(indexPath.row)
+        
+        //2
+        let indexPaths = [indexPath]
+        tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
     }
     
     func configureCheckmarkForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
@@ -96,7 +104,17 @@ class ChecklistViewController: UITableViewController {
         label.text = item.text
     }
     
-    
+    @IBAction func addItem() {
+        let newRowIndex = items.count
+        let item = ChecklistItem()
+        item.text = "I am a fake new row"
+        item.checked = false
+        items.append(item)
+        
+        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+    }
 
 
 }

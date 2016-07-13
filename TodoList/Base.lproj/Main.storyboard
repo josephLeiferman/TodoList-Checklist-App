@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ayl-ST-Qku">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KDx-Co-9vk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--TODO List-->
         <scene sceneID="lEv-US-c4z">
             <objects>
                 <tableViewController id="ayl-ST-Qku" customClass="ChecklistViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,7 +15,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="dmu-wZ-6zy">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dmu-wZ-6zy" id="qCr-bO-jeE">
                                     <rect key="frame" x="0.0" y="0.0" width="561" height="44"/>
@@ -36,8 +36,33 @@
                             <outlet property="delegate" destination="ayl-ST-Qku" id="uSL-Xe-OXG"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="TODO List" id="Psp-Ul-n9G" userLabel="TODO List">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gco-mB-p1d">
+                            <connections>
+                                <action selector="addItem" destination="ayl-ST-Qku" id="v47-MY-ci8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ce-4T-YZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="477"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vgn-ub-Xim">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KDx-Co-9vk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N1z-dl-Rid">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ayl-ST-Qku" kind="relationship" relationship="rootViewController" id="5ps-Qf-XD8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="145-JA-Wrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440" y="477"/>
         </scene>

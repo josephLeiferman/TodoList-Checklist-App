@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     // variables 
     var items: [ChecklistItem]
     
@@ -102,6 +102,14 @@ class ChecklistViewController: UITableViewController {
     func configureTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+    }
+    
+    func addItemViewControllerDidCancel(controller: AddItemViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func addItemViewController(controller: AddItemViewController, didFinishAddingItem item: ChecklistItem) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func addItem() {
